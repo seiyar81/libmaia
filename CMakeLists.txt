@@ -15,6 +15,10 @@ find_package(Qt4 4.8.1 COMPONENTS QtCore QtNetwork QtXml REQUIRED)
 # Include the cmake file needed to use qt4
 include(${QT_USE_FILE})
 
+IF(NOT MAIA_BUILD_TYPE)
+    SET(MAIA_BUILD_TYPE STATIC)
+ENDIF()
+
 #------------------------------------------------------------------------------
 #                             INCLUDE DIRECTORIES
 #------------------------------------------------------------------------------
@@ -55,7 +59,7 @@ qt4_wrap_cpp(MOC_OUTFILES ${MOC_HEADERS})
 #------------------------------------------------------------------------------
 #                                LIBRARY
 #------------------------------------------------------------------------------
-add_library(maia STATIC
+add_library(maia ${MAIA_BUILD_TYPE}
 	${SOURCES}
 	${HEADERS}
 	${MOC_OUTFILES}
