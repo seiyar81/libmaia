@@ -19,6 +19,12 @@ IF(NOT MAIA_BUILD_TYPE)
     SET(MAIA_BUILD_TYPE STATIC)
 ENDIF()
 
+if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+	  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+endif("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+
+SET(MAIA_INCLUDE_DIR ${PROJECT_SOURCE_DIR} CACHE STRING "libmaia include dir" FORCE)
+
 #------------------------------------------------------------------------------
 #                             INCLUDE DIRECTORIES
 #------------------------------------------------------------------------------
